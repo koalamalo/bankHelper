@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1111</width>
+    <height>884</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>The Bank Helper</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,4">
+    <item>
+     <widget class="QFrame" name="sideBarFrame">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="sideBarLayout" stretch="1,1,1,0,1">
+       <item>
+        <widget class="QPushButton" name="inicioButton">
+         <property name="font">
+          <font>
+           <family>URW Gothic</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Inicio</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="configButton">
+         <property name="font">
+          <font>
+           <family>URW Gothic</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Configuracion</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nosButton">
+         <property name="font">
+          <font>
+           <family>Ubuntu Sans</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nosotros</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="flagWidget" native="true">
+         <widget class="QPushButton" name="flagButton">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>150</y>
+            <width>171</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="nextFlagButton">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>150</y>
+            <width>171</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="paisText">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>110</y>
+            <width>201</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>URW Gothic</family>
+            <pointsize>18</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Koala</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+         <zorder>nextFlagButton</zorder>
+         <zorder>flagButton</zorder>
+         <zorder>paisText</zorder>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="salirButton">
+         <property name="font">
+          <font>
+           <family>URW Gothic</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Salir</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="mainFrame">
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="mainLayout" stretch="1,5">
+       <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
+        <widget class="QLabel" name="mainText">
+         <property name="font">
+          <font>
+           <family>URW Gothic</family>
+           <pointsize>36</pointsize>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>The Bank Helper</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="dashWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,2,6">
+          <item>
+           <widget class="QLabel" name="pibLabel">
+            <property name="font">
+             <font>
+              <family>URW Gothic</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>PIB</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="inflationLabel">
+            <property name="font">
+             <font>
+              <family>URW Gothic</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Inflacion</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="unemployLabel">
+            <property name="font">
+             <font>
+              <family>URW Gothic</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Desempleo</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="chartWidget" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_2"/>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

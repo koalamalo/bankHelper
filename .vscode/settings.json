@@ -1,0 +1,11 @@
+{
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": ".*\\.ui$",
+                "cmd": "pyside6-uic /home/koalinmalon/Documentos/proyectoBank/src/ui/main_window.ui -o /home/koalinmalon/Documentos/proyectoBank/src/ui/main_window.py",
+                "debug": true
+            }
+        ]
+    }
+}
