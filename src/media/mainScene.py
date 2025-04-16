@@ -5,9 +5,8 @@ from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QRect, QEvent, QSiz
 from PySide6.QtGui import QPixmap, QIcon
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(BASE_DIR)
-import controllers.banderas as b
+from controllers.controllerMainWindow import banderas as b, dash as d
 from ui.main_window import Ui_MainWindow
-from ui.ui_components import EconomicChart as ec
 from controllers.main_controller import MainController
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -122,13 +121,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.set_flag(next_flag)
             self.flagButton.setGeometry(current_geom)
             self.nextFlagButton.setVisible(False)
-            self.load_country_dashboard(next_flag["iso"])
+            d.load_country_dashboard(self.controller, self.paisText, self.inflationLabel, self.pibLabel, self.unemployLabel, self.chartWidget, next_flag["iso"])
 
         anim_in.finished.connect(on_finished)
         anim_out.start()
         anim_in.start()
-
-
         
     def expand_sidebar(self):
         anim = QPropertyAnimation(self.sideBarFrame, b"minimumWidth")
@@ -155,56 +152,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             elif event.type() == QEvent.Leave:
                 self.collapse_sidebar()
         return super().eventFilter(obj, event)
-    
-    def load_country_dashboard(self, iso_code):
-        country_info = self.controller.get_country_info(iso_code)
-        gdp_data = self.controller.get_gdp_series(iso_code)
-
-        print("📦 Datos país:", country_info)  # Te ayudará a depurar
-
-        # Mostrar info en los labels
-        if country_info:
-            name_value = country_info.get("name", {})
-            if isinstance(name_value, dict):
-                name_value = name_value.get("common", "")
-            self.paisText.setText(name_value)
-
-            self.inflationLabel.setText(f"{country_info.get('inflation', 'N/A')}%")
-            self.pibLabel.setText(f"${country_info.get('gdp', 'N/A')} USD")
-            self.unemployLabel.setText(f"{country_info.get('unemployment', 'N/A')}%")
-        else:
-            print(f"⚠️ No hay datos para {iso_code}")
-
-        # Limpiar layout de gráfica previa
-        layout = self.chartWidget.layout()
-        if layout is not None:
-            while layout.count():
-                child = layout.takeAt(0)
-                if child.widget():
-                    child.widget().deleteLater()
-        else:
-            from PySide6.QtWidgets import QVBoxLayout
-            layout = QVBoxLayout()
-            self.chartWidget.setLayout(layout)
-
-        # Añadir nueva gráfica
-        if gdp_data:
-            chart = ec("PIB en USD (últimos años)", gdp_data)
-            layout.addWidget(chart)
-            
-            
-            
-    
-
-
-    
+                
+                
     """def centered_rect(self, container: QWidget, widget_width: int, widget_height: int) -> QRect:
     c_w = container.width()
     c_h = container.height()
     x = (c_w - widget_width) // 2
     y = (c_h - widget_height) // 2
     return QRect(x, y, widget_width, widget_height)"""
-
-
-    
-

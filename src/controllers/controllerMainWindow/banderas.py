@@ -1,7 +1,7 @@
 import os
 import pycountry
 
-FLAGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "media", "flags"))
+FLAGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "media", "flags"))
 
 flagsDown = [f for f in os.listdir(FLAGS_DIR) if f.endswith(".png")]
 flagsDown.sort()
