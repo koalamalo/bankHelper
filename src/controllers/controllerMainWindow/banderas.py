@@ -1,5 +1,6 @@
 import os
 import pycountry
+from PySide6.QtGui import QPixmap, QIcon
 
 FLAGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "media", "flags"))
 
@@ -28,9 +29,14 @@ flags= [{'filename': 'co.png', 'iso': 'COL'},
         {'filename': 'us.png', 'iso': 'USA'},
         {'filename': 'ca.png', 'iso': 'CAN'},]
 
-def flagButtonInit(nextFlagButton):
-    nextFlagButton.setVisible(False)
-    nextFlagButton.setFlat(True)
-    nextFlagButton.setStyleSheet("background: transparent; border: none;")
-    
+def set_flag(flag_data, flagButton, iconsize):
+        flag_filename = flag_data["filename"]
+        flag_path = os.path.join(FLAGS_DIR, flag_filename)
+        pixmap = QPixmap(flag_path)
+        if pixmap.isNull():
+            print(f"❌ Error: No se pudo cargar la imagen {flag_path}")
+        else:
+            flagButton.setIcon(QIcon(pixmap))
+            flagButton.setIconSize(iconsize)
+            flagButton.setFixedSize(iconsize.width()+20, iconsize.height()+20)
     
